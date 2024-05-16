@@ -5,7 +5,7 @@ from ray import serve
 app = FastAPI()
 
 
-@serve.deployment(route_prefix="/")
+@serve.deployment(route_prefix="/summarize")
 @serve.ingress(app)
 class SummaryDeployment:
     # FastAPI will automatically parse the HTTP request for us.
@@ -13,7 +13,7 @@ class SummaryDeployment:
         from transformers import pipeline
         self.classifier = pipeline("summarization", model="facebook/bart-large-cnn")
 
-    @app.get("/summarize")
+    @app.get("/summarize/text")
     def summarize(self, text: str) -> str:
         result: list = self.classifier(text, min_length=10, max_length=50)
         print(result)
