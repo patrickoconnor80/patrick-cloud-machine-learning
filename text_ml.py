@@ -58,7 +58,7 @@ class Summarizer:
         summary = self.summarize(english_text)
 
         translation_ref = await self.translator.translate.remote(summary)
-        translation = await translation_ref
+        translation = translation_ref
 
         return translation
 
