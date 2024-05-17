@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "this" {
-  bucket = "${local.prefix}-mlflow-artifact-store"
+  bucket = "${local.prefix}-mlflow-artifact-root"
 
   tags = merge(
     {
