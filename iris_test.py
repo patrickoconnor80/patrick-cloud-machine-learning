@@ -6,6 +6,7 @@ flowers = [
     [4, 5, 2, 4]
 ]
 response = requests.post("http://localhost:8000/", json=flowers)
+response = requests.post("https://kubernetes.patrick-cloud.com/ray-service-serve/iris/", json=flowers)
 
 flower_preditions = response.text
 
